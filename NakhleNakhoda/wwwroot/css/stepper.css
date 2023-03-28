@@ -1,0 +1,90 @@
+﻿
+.stepper-input {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.stepper-input-container {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.stepper-input-text-box {
+    width: 51px;
+    min-width: 100%;
+    border: none;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    /*    transition: all 0.2s ease-out;*/
+}
+
+    .stepper-input-text-box:focus {
+        outline: none;
+    }
+
+    .stepper-input-text-box::-webkit-inner-spin-button,
+    .stepper-input-text-box::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+.stepper-input-text-box {
+    -moz-appearance: textfield;
+}
+
+button.stepper-button {
+    border: none;
+    position: relative;
+    height: 100%;
+    margin-top: 32px;
+    padding: 12px 12px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+button.stepper-button {
+    margin: 0;
+}
+
+    button.stepper-button:active,
+    button.stepper-button:focus {
+        outline: none;
+    }
+
+    button.stepper-button::after {
+        content: "";
+        position: absolute;
+        opacity: 1;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        transition: inherit;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    button.stepper-button:disabled {
+        pointer-events: none;
+    }
+
+        button.stepper-button:disabled::after {
+            opacity: 0.25;
+        }
+
+.stepper-button-decrement::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 12H7' stroke='%23ffffff' stroke-width='2' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+}
+
+.stepper-button-increment::after {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 7V17' stroke='%23ffffff' stroke-width='2' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M17 12H7' stroke='%23ffffff' stroke-width='2' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+}
+
+.stepper-button {
+    border: none;
+    background-color: #b56952;
+}

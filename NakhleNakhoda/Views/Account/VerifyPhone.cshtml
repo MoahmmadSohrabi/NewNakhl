@@ -1,0 +1,472 @@
+﻿@model LoginOtpModel
+@inject IConfiguration configuration
+@{
+    ViewBag.PageTitle = " تائید شماره موبایل ";
+    string phone = Model.PhoneNumber;
+}
+@section Styles {
+    <style>
+
+        .username-preview {
+            direction: ltr;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .my-3 {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+        }
+
+        .username-preview img {
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        .username-preview {
+            direction: ltr;
+        }
+
+            .username-preview span {
+                font-size: 12px;
+                color: #424242;
+                font-weight: 700;
+            }
+
+
+        .mt-2 {
+            margin-top: 10px !important;
+        }
+
+
+        .digits.lg input:first-child {
+            margin-left: 0 !important;
+        }
+
+        .digits.lg input {
+            font-size: 30px !important;
+        }
+
+        .digits.lg input {
+            margin: 0 9px !important;
+            margin-left: 9px !important;
+            border-bottom-width: 4px !important;
+            width: 40px !important;
+            line-height: 2 !important;
+            height: 47px !important;
+        }
+
+        .digits input {
+            border: 0 !important;
+            border-bottom-color: currentcolor !important;
+            border-bottom-style: none !important;
+            border-bottom-width: 0px !important;
+            border-bottom: 2px solid #e1e1e1 !important;
+            border-bottom-width: 2px !important;
+            border-radius: 0 !important;
+            text-align: center !important;
+            margin: 0 2px !important;
+            width: 40px !important;
+            height: 40px !important;
+            display: inline-block !important;
+            vertical-align: baseline !important;
+            padding: 0 !important;
+            font-size: 20px !important;
+        }
+
+            .digits input.active {
+                border-bottom-color: #008be2 !important;
+            }
+
+            .digits input:focus {
+                box-shadow: none;
+                outline: none;
+            }
+
+        @@media (min-width:480px) {
+            .digits input {
+                width: 30px !important;
+                height: 30px !important
+            }
+        }
+
+        @@media (min-width:768px) {
+            .digits.lg input {
+                font-size: 30px !important
+            }
+        }
+
+        @@media (max-width:480px) {
+            .digits.lg input {
+                width: 35px !important;
+                height: 42px !important;
+                margin: 0 6px !important
+            }
+        }
+
+        .step {
+            max-width: 400px;
+            width: 100%;
+        }
+
+            .step .step__title, .step > h1, .step .step__title > h1 {
+                font-size: 1.329rem;
+                font-weight: 700;
+                line-height: 1.4;
+                color: #232933;
+            }
+
+        .step__subtitle {
+            color: #3a3a3a;
+            font-size: 12px;
+        }
+
+        .step__divider {
+            color: #f5f5f5;
+            width: 200px;
+            margin: 0 auto;
+            margin-bottom: 0px;
+        }
+
+        .retry {
+            display: none;
+        }
+
+            .retry a, a:focus, a:hover {
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .retry a {
+                color: #2979ff !important;
+                transition: all .25s;
+            }
+
+        /* Hide Input Number Arrows Begin*/
+        /* Chrome, Safari, Edge, Opera */
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /* Firefox */
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .validation-summary-errors > ul {
+            list-style-type: none;
+            padding: 0;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        /* Hide Input Number Arrows End*/
+    </style>
+}
+
+
+<div class="inner-banner inner-bg9">
+    <div class="container">
+        <div class="inner-title">
+            <ul>
+                <li>
+                    <a asp-controller="Home" asp-action="Index">خانه</a>
+                </li>
+                <li><i class='bx bx-chevron-left'></i></li>
+                <li>ورود کاربران</li>
+            </ul>
+            <h3>ورود کاربران</h3>
+        </div>
+    </div>
+</div>
+
+
+<div class="sign-in-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="user-all-form">
+                    <div class="contact-form">
+                        <div class="login-content">
+                            <form id="account" method="post">
+                                <div class="step text-center mx-auto my-30">
+                                    <div class="step__title mb-1">
+                                        <h1>@ViewBag.PageTitle</h1>
+                                    </div>
+                                    <div class="step__subtitle mb-1 mx-auto">
+                                        کد @configuration["Sms:VerifyingCodeLength"] رقمی پیامک شده به شماره زیر را وارد کنید.
+                                    </div>
+                                    <hr class="step__divider mb-2">
+                                    <div class="text-center">
+                                        <div class="username-preview my-3">
+                                            <img src="~/img/icon/mobile-icon.svg" alt="mobile">
+                                            <span>@phone</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-20">
+                                        <div class="digits ltr text-center lg mt-2" id="OTPInput"></div>
+                                        <input asp-for="@Model.OtpNumber" class="form-control form-control-lg ltr" required type="hidden" />
+                                        <input asp-for="@Model.PhoneNumber" class="form-control form-control-lg ltr" required type="hidden" value="@phone" />
+                                    </div>
+                                    <div id="otpRetry" class="retry text-center mt-3 mb-4">
+                                        <a href="javascript:;" id="retryVerifyingCode">
+                                            <img src="~/img/icon/reload-icon.svg" alt="reload" class="ml-1">
+                                            ارسال مجدد کد
+                                        </a>
+                                    </div>
+                                    <div id="otpCountDown" class="text-center mt-3 mb-4">
+                                        <p class="my-1">
+                                            امکان ارسال مجدد کد بعد از <span id="timeOut">@configuration["Sms:RetryTimeOut"]</span> ثانیه
+                                        </p>
+                                    </div>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div class="login-buttons" style="margin-top:30px;">
+                                        <button type="submit" class="btn btn-success btn-block btn-lg buttonload" id="retryButton" disabled="disabled">تایید</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+    <form class="text-right">
+        <div class="c-login__form-header">
+                        </div>
+            <!---->
+            <div class="text-center">
+                <div data-v-70e57ac6="" class="username-preview my-3">
+                    <!----><img data-v-70e57ac6="" src="https://cdn.alibaba.ir/dist/7447ee3b/img/mobile-icon.c0c423b.svg" alt="mobile" data-test="usernamePreviewMobileIcon"> <span data-v-70e57ac6="" data-test="usernamePreviewText">
+                        0917 538 5807
+                    </span>
+                    </div>
+            </div>
+            <div class="digits ltr text-center lg mt-2" id="OTPInput"></div>
+            <input hidden id="otp" name="otp" value="">
+
+            <div class="text-center mt-3 mb-4">
+                <p data-test="otpCountDown" class="my-1">
+                    امکان ارسال مجدد کد بعد از 51 ثانیه
+                </p>
+            </div>
+            <div data-test="BackendErrorMessage" class="error-message">
+                <!---->
+            </div>
+            <button type="submit" data-test="submitButton" disabled="disabled" class="btn btn-primary btn-block mt-4">
+                ادامه
+            </button>
+            <button type="button" data-test="backButton" class="btn btn-primary btn-block btn-outline mt-2 visible-xs">
+                برگشت
+            </button>
+        </form> *@
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function setInputFilter(textbox, inputFilter) {
+            ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+                textbox.addEventListener(event, function () {
+                    if (inputFilter(this.value)) {
+                        this.oldValue = this.value;
+                        this.oldSelectionStart = this.selectionStart;
+                        this.oldSelectionEnd = this.selectionEnd;
+                    } else if (this.hasOwnProperty("oldValue")) {
+                        this.value = this.oldValue;
+                        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                    } else {
+                        this.value = "";
+                    }
+                });
+            });
+        }
+    </script>
+    <script>
+
+        /* This creates all the OTP input fields dynamically. Change the otp_length variable  to change the OTP Length */
+        //const $otp_length = 6;
+        const $otp_length = '@configuration["Sms:VerifyingCodeLength"]';
+
+        var inputOtpNumber = $("[name='OtpNumber']");
+        var inputPhoneNumber = $("[name='PhoneNumber']");
+        inputOtpNumber.value = "";
+        inputPhoneNumber.value = "";
+        var retryButton = $('#retryButton');
+
+        const element = document.getElementById('OTPInput');
+        for (let i = 0; i < $otp_length; i++) {
+            let inputField = document.createElement('input'); // Creates a new input element
+            inputField.className = "";
+            // Do individual OTP input styling here;
+            inputField.style.cssText = ""; // Input field text styling. This css hides the text caret
+            inputField.id = 'otp-field' + i; // Don't remove
+            inputField.type = 'tel'; // Don't remove
+            inputField.autocomplete = 'off';
+            inputField.maxLength = 1; // Sets individual field length to 1 char
+            if (i == 0) {
+                inputField.focus();
+            }
+            element.appendChild(inputField); // Adds the input field to the parent div (OTPInput)
+        }
+
+        const inputs = document.querySelectorAll('#OTPInput > *[id]');
+
+        for (let i = 0; i < inputs.length; i++) {
+            setInputFilter(inputs[i], function (value) {
+                return /^\d*$/.test(value);
+            });
+        }
+
+        /*  This is for switching back and forth the input box for user experience */
+        inputs[0].focus();
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].addEventListener('keyup', function (event) {
+                if (event.keyCode === 8 || event.keyCode === 46) {
+                    inputs[i].className = "";
+                    retryButton.attr('disabled', true);
+                    if (i !== 0) {
+                        inputs[i - 1].select();
+                    }
+                }
+                // else if (event.key === "ArrowLeft" && i !== 0) {
+                //     inputs[i - 1].focus();
+                // } else if (event.key === "ArrowRight" && i !== inputs.length - 1) {
+                //     inputs[i + 1].focus();
+                // }
+
+
+            });
+
+            inputs[i].addEventListener('input', function () {
+                inputs[i].value = inputs[i].value.toUpperCase(); // Converts to Upper case. Remove .toUpperCase() if conversion isnt required.
+                if (i === inputs.length - 1 && inputs[i].value !== '') {
+                    retryButton.attr('disabled', false);
+
+                    inputs[i].className = "active";
+                    var otp = '';
+                    for (let i = 0; i < inputs.length; i++) {
+                        otp += inputs[i].value;
+                    }
+                    console.log("OtpNumber: " + otp);
+                    inputOtpNumber.val(otp);
+                    //VerifyingCode(inputOtpNumber.value);
+                    //inputOtpNumber.value ="";
+                    return true;
+                } else if (inputs[i].value !== '') {
+                    inputs[i].className = "active";
+                    retryButton.attr('disabled', true);
+                    inputs[i + 1].focus();
+                }
+            });
+
+        }
+        /*  This is to get the value on pressing the submit button
+         *   In this example, I used a hidden input box to store the otp after compiling data from each input fields
+         *   This hidden input will have a name attribute and all other single character fields won't have a name attribute
+         *   This is to ensure that only this hidden input field will be submitted when you submit the form */
+        @*
+        document.getElementById('otpSubmit').addEventListener("click", function () {
+        const inputs = document.querySelectorAll('#OTPInput > *[id]');
+        let compiledOtp = '';
+        for (let i = 0; i < inputs.length; i++) {
+        compiledOtp += inputs[i].value;
+        }
+        document.getElementById('otp').value = compiledOtp;
+
+        return true;
+        });*@
+    </script>
+    <script>
+
+            function startTimer(duration, display) {
+                var timer = duration;
+                var myInterval = setInterval(countDown, 1000);
+                function countDown() {
+                    display.text(timer);
+
+                    if (--timer < 0) {
+                        clearInterval(myInterval);
+                        document.querySelector("#otpRetry").style.display = "block";
+                        document.querySelector("#otpCountDown").style.display = "none";
+                        display.text(duration);
+                    }
+                }
+            }
+
+        var retryTimeOut = '@configuration["Sms:RetryTimeOut"]';
+        var display = $('#timeOut');
+
+        jQuery(function ($) {
+            startTimer(retryTimeOut, display);
+        });
+
+        $(document).ready(function () {
+            $('#retryVerifyingCode').click(function () {
+                var postData = {
+                    phoneNumber: '@phone',
+                };
+                console.log(addAntiForgeryToken(postData));
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: "@(Url.Action("SendVerifyingCodeSms", "Api", new { Area = "" }))",
+                    data: addAntiForgeryToken(postData),
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.isError) {
+                            return;
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                    },
+                    complete: function (jqXHR, textStatus) {
+
+                        jQuery(function ($) {
+                            startTimer(retryTimeOut, display);
+                        });
+                        document.querySelector("#otpRetry").style.display = "none";
+                        document.querySelector("#otpCountDown").style.display = "block";
+                    }
+                });
+            });
+        });
+
+        var loadingButton = "<i class='fas fa-circle-notch fa-spin'></i> لطفا صبر کنید";
+        var normalButton = "تایید";
+
+        function VerifyingCode(code) {
+            retryButton.attr('disabled', true);
+            retryButton.html(loadingButton);
+
+            var postData = {
+                phoneNumber: '@phone',
+                OtpNumber: code,
+            };
+
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "@(Url.Action("VerifyingCode", "Api", new { Area = "" }))",
+                data: addAntiForgeryToken(postData),
+                success: function (data, textStatus, jqXHR) {
+
+                    if (data.isError) {
+                        return;
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                },
+                complete: function (jqXHR, textStatus) {
+                    retryButton.attr('disabled', false);
+                    retryButton.html(normalButton);
+                }
+            });
+        }
+    </script>
+}

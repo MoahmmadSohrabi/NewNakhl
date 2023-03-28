@@ -1,0 +1,71 @@
+﻿@model NakhleNakhoda.Data.Models.DB.JozeyatHotel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-page">
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+<h2>Edit</h2>
+
+<h4>JozeyatHotel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Jozeyat_ID" />
+            <div class="form-group">
+                <label asp-for="Jozeyat_HotelID" class="control-label"></label>
+                <select asp-for="Jozeyat_HotelID" class="form-control" asp-items="ViewBag.Jozeyat_HotelID"></select>
+                <span asp-validation-for="Jozeyat_HotelID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jozeyat_ZarfiatOtaghID" class="control-label"></label>
+                <select asp-for="Jozeyat_ZarfiatOtaghID" class="form-control" asp-items="ViewBag.Jozeyat_ZarfiatOtaghID"></select>
+                <span asp-validation-for="Jozeyat_ZarfiatOtaghID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jozeyat_TedadTakhtID" class="control-label"></label>
+                <select asp-for="Jozeyat_TedadTakhtID" class="form-control" asp-items="ViewBag.Jozeyat_TedadTakhtID"></select>
+                <span asp-validation-for="Jozeyat_TedadTakhtID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jozeyat_TedadStareID" class="control-label"></label>
+                <select asp-for="Jozeyat_TedadStareID" class="form-control" asp-items="ViewBag.Jozeyat_TedadStareID"></select>
+                <span asp-validation-for="Jozeyat_TedadStareID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jozeyat_Teadad" class="control-label"></label>
+                <input asp-for="Jozeyat_Teadad" class="form-control" />
+                <span asp-validation-for="Jozeyat_Teadad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

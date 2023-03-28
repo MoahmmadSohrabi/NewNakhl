@@ -1,0 +1,218 @@
+﻿@model DynamicRoleClaimsManagerViewModel
+
+@{
+    ViewData["Title"] = "تنظیم سطوح دسترسی پویای نقش " + Model.RoleIncludeRoleClaims.Description;
+}
+@section Styles {
+    <style>
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link, .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover, .nav-pills > li > a.active, .nav-pills > li > a.active:focus, .nav-pills > li > a.active:hover {
+            background: #1b66b1;
+            color: #fff;
+        }
+        .nav-pills .nav-link, .nav-pills > li > a {
+            border-radius: 5px;
+            background: #f7f7f7;
+            margin: 2px 0px;
+            border: 1px solid #ddd;
+            font-size: initial;
+        }
+    </style>
+}
+
+@*
+    <h2>تنظیم سطوح دسترسی پویای نقش «@Model.RoleIncludeRoleClaims.Name»</h2>
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert">×</a>
+            <ul>
+                <li>
+                    نقش ویژه‌ی Admin به تمام صفحات لیست شده‌ی در اینجا دسترسی کاملی دارد و هرگونه ویرایشی بر روی آن تاثیرگذار نخواهد بود.
+                </li>
+                <li>
+                    در اینجا می‌توان به هر نقش ثابت، دسترسی‌های پویایی را نیز اعطاء کرد. در این حالت کنترلر و یا اکشن متدهایی با پالیسی سطوح دسترسی پویا، لیست شده و قابل انتخاب خواهند بود
+                    <span dir="ltr">.([Authorize(Policy = ConstantPolicies.DynamicPermission)])</span>
+                </li>
+            </ul>
+        </div>
+*@
+
+
+<form method="post" asp-controller="Role" asp-action="RoleClaimsManager" asp-route-id="@Model.RoleIncludeRoleClaims.Id">
+    <div class="panel panel-inverse">
+        <div class="panel-heading">
+            <div class="panel-heading-btn">
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+            </div>
+            <h4 class="panel-title" style="font-weight: normal; font-size: 15px;">عملیات</h4>
+        </div>
+        <div class="panel-body">
+            <div class="content-header clearfix" style="font-weight:lighter">
+                <h4 class="float-right">
+                    تنظیم سطوح دسترسی پویای نقش «@Model.RoleIncludeRoleClaims.Description»
+                    <admin-button-back asp-action="List" />
+                </h4>
+                <div class="float-left">
+                    <admin-button-save name="save" text="ذخیره" />
+                    <admin-button-save name="save-continue" text="ذخیره و ادامه ویرایش" />
+                </div>
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+        </div>
+    </div>
+
+    <admin-panel asp-name="role-info" asp-icon="fa fa-info" asp-title="سطوح دسترسی">
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    @foreach (var controller in Model.SecuredControllerActions.Select((value, index) => new { index, value }).OrderBy(x => x.value.ControllerId))
+                    {
+                        var displayName = controller.value.ControllerDisplayName;
+                        if (string.IsNullOrWhiteSpace(displayName))
+                        {
+                            displayName = controller.ToString();
+                        }
+                        <div class="nav-link @(controller.index==0?"active":"") pr-4" id="v-pills-@(controller.index)-tab" data-toggle="pill" href="#v-pills-@(controller.index)" role="tab" aria-controls="v-pills-@(controller.index)" aria-selected="true" style="font-size:19px;">
+                            @displayName
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content pt-0" id="v-pills-tabContent">
+                    @foreach (var controller in Model.SecuredControllerActions.Select((value, index) => new { index, value }).OrderBy(x => x.value.ControllerId))
+                    {
+                        <div class="tab-pane fade @(controller.index==0?"show active":"")" id="v-pills-@(controller.index)" role="tabpanel" aria-labelledby="v-pills-@(controller.index)-tab">
+
+                            <div class="card" style="border: 1px solid #ddd;">
+                                <ul class="list-group list-group-flush">
+                                    @foreach (var action in controller.value.MvcActions.Select((value, index) => new { index, value }))
+                                    {
+                                        var isSelected = Model.RoleIncludeRoleClaims.RoleClaim
+                                            .Any(roleClaim => roleClaim.ClaimType == PolicieNames.DynamicPermissionClaimType &&
+                                                              roleClaim.ClaimValue == action.value.ActionId);
+                                        var selected = isSelected ? "checked" : "";
+                                        var selectedClass = isSelected ? "list-group-item-success" : "";
+                                        var actionDisplayName = action.value.ActionDisplayName;
+                                        if (string.IsNullOrWhiteSpace(actionDisplayName))
+                                        {
+                                            actionDisplayName = $"{action}::{action.value.ActionId}";
+                                        }
+                                        <li class="list-group-item @selectedClass" role="presentation">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="actionIds" id="@action.value.ActionId@action.index" style="transform: scale(1.5);" value="@action.value.ActionId" @selected />
+                                                <label for="@action.value.ActionId@action.index" class="mr-2" style="font-size:15px;font-weight:400;">@actionDisplayName</label>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </admin-panel>
+@*
+    <admin-panel asp-name="role-info" asp-icon="fa fa-info" asp-title="سطوح دسترسی">
+        <input name="RoleId" value="@Model.RoleIncludeRoleClaims.Id" type="hidden" />
+        @foreach (var controller in Model.SecuredControllerActions.OrderBy(x => x.ControllerId))
+        {
+            <div class="card mt-5" style="border: 1px solid #ddd;">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        @{
+                            var displayName = controller.ControllerDisplayName;
+                            if (string.IsNullOrWhiteSpace(displayName))
+                            {
+                                displayName = controller.ToString();
+                            }
+                        }
+                        @displayName
+                    </h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var action in controller.MvcActions)
+                    {
+                        var isSelected = Model.RoleIncludeRoleClaims.RoleClaim
+                            .Any(roleClaim => roleClaim.ClaimType == PolicieNames.DynamicPermissionClaimType &&
+                                              roleClaim.ClaimValue == action.ActionId);
+                        var selected = isSelected ? "checked" : "";
+                        var selectedClass = isSelected ? "list-group-item-success" : "";
+                        var actionDisplayName = action.ActionDisplayName;
+                        if (string.IsNullOrWhiteSpace(actionDisplayName))
+                        {
+                            actionDisplayName = $"{action}::{action.ActionId}";
+                        }
+                        <li class="list-group-item @selectedClass" role="presentation">
+                            <input type="checkbox" name="actionIds" value="@action.ActionId" @selected />
+                            @actionDisplayName
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    </admin-panel>*@
+</form>
+@*<div id="dynamicPermissions">
+        <form method="post"
+              asp-controller="Role"
+              asp-action="RoleClaimsManager" asp-route-id="@Model.RoleIncludeRoleClaims.Id">
+            <input name="RoleId" value="@Model.RoleIncludeRoleClaims.Id" type="hidden" />
+            @foreach (var controller in Model.SecuredControllerActions.OrderBy(x => x.ControllerDisplayName))
+            {
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            @{
+                                var displayName = controller.ControllerDisplayName;
+                                if (string.IsNullOrWhiteSpace(displayName))
+                                {
+                                    displayName = controller.ToString();
+                                }
+                            }
+                            @displayName
+                        </h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @foreach (var action in controller.MvcActions.OrderBy(x => x.ActionDisplayName))
+                        {
+                            var isSelected = Model.RoleIncludeRoleClaims.RoleClaim
+                                .Any(roleClaim => roleClaim.ClaimType == PolicieNames.DynamicPermissionClaimType &&
+                                                  roleClaim.ClaimValue == action.ActionId);
+                            var selected = isSelected ? "checked" : "";
+                            var selectedClass = isSelected ? "list-group-item-success" : "";
+                            var actionDisplayName = action.ActionDisplayName;
+                            if (string.IsNullOrWhiteSpace(actionDisplayName))
+                            {
+                                actionDisplayName = $"{action}::{action.ActionId}";
+                            }
+                            <li class="list-group-item @selectedClass" role="presentation">
+                                <input type="checkbox" name="actionIds" value="@action.ActionId" @selected />
+                                @actionDisplayName
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            <button type="submit" class="btn btn-info top15">
+                اعمال تغییرات
+                <span aria-hidden="true" class="fas fa-thumbs-up"></span>
+            </button>
+        </form>
+    </div>
+*@
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input[name="actionIds"]').click(function () {
+                if ($(this).is(':checked')) {
+                    $(this).parent().parent().addClass('list-group-item-success');
+                } else {
+                    $(this).parent().parent().removeClass('list-group-item-success');
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NakhleNakhoda.Web", "NakhleNakhoda\NakhleNakhoda.Web.csproj", "{43E19470-145E-4256-B85C-20214091C521}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NakhleNakhoda.Domain", "NakhleNakhoda.Domain\NakhleNakhoda.Domain.csproj", "{6628B682-25B9-4372-86E3-3867F8E3D8F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NakhleNakhoda.Common", "NakhleNakhoda.Common\NakhleNakhoda.Common.csproj", "{45FEE1AA-2758-47CD-ADDA-F099D6E5B37F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NakhleNakhoda.Services", "NakhleNakhoda.Services\NakhleNakhoda.Services.csproj", "{72056C79-1B25-487A-B124-B8EE6E4E0966}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NakhleNakhoda.Data", "NakhleNakhoda.Data\NakhleNakhoda.Data.csproj", "{A86862F3-8A30-4F62-842E-1F52FCD9CB42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NakhleNakhoda.ViewModels", "NakhleNakhoda.ViewModels\NakhleNakhoda.ViewModels.csproj", "{C5F39D89-765B-46CD-B291-42C524A52B8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43E19470-145E-4256-B85C-20214091C521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43E19470-145E-4256-B85C-20214091C521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43E19470-145E-4256-B85C-20214091C521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43E19470-145E-4256-B85C-20214091C521}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6628B682-25B9-4372-86E3-3867F8E3D8F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6628B682-25B9-4372-86E3-3867F8E3D8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6628B682-25B9-4372-86E3-3867F8E3D8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6628B682-25B9-4372-86E3-3867F8E3D8F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45FEE1AA-2758-47CD-ADDA-F099D6E5B37F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45FEE1AA-2758-47CD-ADDA-F099D6E5B37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45FEE1AA-2758-47CD-ADDA-F099D6E5B37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45FEE1AA-2758-47CD-ADDA-F099D6E5B37F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72056C79-1B25-487A-B124-B8EE6E4E0966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72056C79-1B25-487A-B124-B8EE6E4E0966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72056C79-1B25-487A-B124-B8EE6E4E0966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72056C79-1B25-487A-B124-B8EE6E4E0966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86862F3-8A30-4F62-842E-1F52FCD9CB42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A86862F3-8A30-4F62-842E-1F52FCD9CB42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A86862F3-8A30-4F62-842E-1F52FCD9CB42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A86862F3-8A30-4F62-842E-1F52FCD9CB42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5F39D89-765B-46CD-B291-42C524A52B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5F39D89-765B-46CD-B291-42C524A52B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5F39D89-765B-46CD-B291-42C524A52B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5F39D89-765B-46CD-B291-42C524A52B8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F06F0C8-CE03-496F-8A8E-FD168BC87FA7}
+	EndGlobalSection
+EndGlobal

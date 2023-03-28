@@ -1,0 +1,48 @@
+﻿@model NakhleNakhoda.Data.Models.DB.EmkanatHotel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-page">
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+<h2>Details</h2>
+
+<div>
+    <h4>EmkanatHotel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Emkanat_Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Emkanat_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Emkanat_Icon)
+        </dt>
+        <dd>
+            <img src="~/upload/emkan/@Model.Emkanat_Icon" alt="Alternate Text" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelEmkanat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HotelEmkanat.Name_Hotel)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Emkanat_ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

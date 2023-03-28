@@ -1,0 +1,70 @@
+﻿@font-face {
+    font-family: yekan;
+    src: url("~/front_assets/fonts/Estedad-Regular.ttf");
+}
+/* mobile show */
+@media (max-width:480px) {
+    #des_logo, #desktop_menu, #desk_inputs_, #feature_rooms_des, hr, #featuresrooms_mob {
+        display: none;
+    }
+
+    .about_sec {
+        text-align: right;
+        margin-top: 58px;
+    }
+
+    .title_ {
+        text-align: right;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .description_ {
+        font-size: 13px;
+        text-align: right;
+    }
+
+
+
+    #f1 {
+        margin-top: -400px;
+    }
+}
+
+/* desktop show */
+@media (min-width:480px) {
+    #hamburger_, #inputTime, #feature_rooms, #featuresrooms_des {
+        display: none;
+    }
+
+    .title_ {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .description_ {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .titlecap_rooms {
+        font-size: 20px;
+    }
+
+    .rooms_pricecap {
+        font-size: 18px;
+    }
+
+    #f1 {
+        height: 1000px;
+        margin-top: -280px;
+        background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),url(~/front_assets/images/about-img4.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    #mob_logo {
+        display: none;
+    }
+}

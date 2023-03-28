@@ -1,0 +1,65 @@
+﻿@model NakhleNakhoda.Data.Models.DB.Hotels
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-page">
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+<h2>Details</h2>
+
+<div class="col col-md-12">
+
+    <hr />
+    <dl class="dl-horizontal bg-white p-3 m-3">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_Hotel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name_Hotel)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Jozeyat_Gheymat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Jozeyat_Gheymat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ZamanShoroa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ZamanShoroa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ZamanPayan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ZamanPayan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Faal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Faal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tozihat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tozihat)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Hotel_ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

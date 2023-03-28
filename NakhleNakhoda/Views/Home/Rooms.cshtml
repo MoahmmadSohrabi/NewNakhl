@@ -1,0 +1,147 @@
+﻿@model IEnumerable<NakhleNakhoda.Data.Models.ViewModel.Jostejo>
+@{
+    ViewData["Title"] = "Jostejo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model.Count() > 0 || Model != null)
+{
+    <div class="theme-hero-area front">
+        <div class="theme-hero-area-bg-wrap">
+            <div class="theme-hero-area-bg" style="background-image:url(/Ghaleb/img/img/PHOTO-2023-03-19-18-36-16.jpg);" id="hero-banner"></div>
+            <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
+            <div class="blur-area" data-bg-area="#hero-banner" data-blur-area="#hero-search-form" data-blur="20"></div>
+        </div>
+        <div class="theme-hero-area-body">
+            <div class="container">
+                <div class="_pb-100 _pt-150 _pv-mob-50">
+                    <div class="theme-search-area _mob-h theme-search-area-stacked theme-search-area-white">
+                        <div class="theme-search-area-header _mb-20">
+                            <ul class="theme-breadcrumbs _mt-20">                        
+                                <li>
+                                    <p class="theme-breadcrumbs-item-title">
+                                        <a style="font-family:yekan !important;" href="#">@Model.Count() مورد پیدا شد.</a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p style="font-family:yekan !important;">
+                                        از تاریخ : @ViewBag.vorod
+                                        <br />
+                                        تا تاریخ :@ViewBag.khoroj
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="theme-page-section theme-page-section-gray">
+        <div class="container">
+            <div class="row row-col-static" id="sticky-parent">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="theme-search-results">
+                        <div class="_mob-h">
+                            @foreach (var item in Model)
+                            {
+
+                                <div class="theme-search-results-item _mb-10 theme-search-results-item-full">
+                                    <div class="theme-search-results-item-preview">
+                                        <a class="theme-search-results-item-mask-link" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="searchResultsItem-"></a>
+                                        <div class="row row-no-gutter row-eq-height">
+                                            <div class="col-md-4">
+                                                <div class="banner theme-search-results-item-img-full banner-">
+                                                    <div class="banner-bg" style="background-image:url(@item.imgUrl);"></div>
+                                                    <a class="banner-link" href="/Home/Showroom?id=@item.HotelID&khoroj=@ViewBag.khoroj&vorod=@ViewBag.vorod"></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="theme-search-results-item-body">
+                                                    <div class="row row-eq-height" data-gutter="20">
+                                                        <div class="col-md-8">
+                                                            <ul class="theme-search-results-item-hotel-stars">
+                                                                @{
+
+                                                                    int j = Convert.ToInt32(item.Stareh);
+                                                                    for (int i = 0; i < j; i++)
+                                                                    {
+                                                                        <li>
+                                                                            <i class="fa fa-star"></i>
+                                                                        </li>
+                                                                    }
+                                                                }
+
+                                                            </ul>
+                                                            <h5 class="theme-search-results-item-title theme-search-results-item-title-lg"> @item.NameHotel</h5>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="theme-search-results-item-book">
+                                                                <div class="theme-search-results-item-price">
+                                                                    <p class="theme-search-results-item-price-sign">قیمت برای 1 شب نفری</p>
+                                                                    <span style="font-family:b yekan !important;" class="theme-search-results-item-price-tag">@item.GheymatYekShab  </span> <small>ریال</small>
+
+                                                                </div>
+                                                                <a style="border-radius:10px;" class="btn My-btn-primary-inverse  btn-block theme-search-results-item-price-btn" href="/Home/Showroom?id=@item.HotelID&khoroj=@ViewBag.khoroj&vorod=@ViewBag.vorod">
+                                                                    مشاهده
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+
+    <div class="theme-hero-area front">
+        <div class="theme-hero-area-bg-wrap">
+            <div class="theme-hero-area-bg" style="background-image:url(img/img/daak8aqd_-i_1500x500.jpg);" id="hero-banner"></div>
+            <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
+            <div class="blur-area" data-bg-area="#hero-banner" data-blur-area="#hero-search-form" data-blur="20"></div>
+        </div>
+        <div class="theme-hero-area-body">
+            <div class="container">
+                <div class="_pb-100 _pt-150 _pv-mob-50">
+                    <div class="theme-search-area _mob-h theme-search-area-stacked theme-search-area-white">
+                        <div class="theme-search-area-header _mb-20">
+                            <ul class="theme-breadcrumbs _mt-20">
+                                <li>
+                                    <p class="theme-breadcrumbs-item-title">
+                                        <a href="#">0 مورد پیدا شد.</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+

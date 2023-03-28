@@ -1,0 +1,105 @@
+﻿
+    <nav class="navbar navbar-default navbar-inverse navbar-theme navbar-theme-abs navbar-theme-transparent navbar-theme-border" id="main-nav">
+        <div class="container">
+            <div class="navbar-inner nav">
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed" data-target="#navbar-main" data-toggle="collapse" type="button" area-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" asp-controller="home" asp-action="index">
+                        <img src="/Ghaleb/img/img/logo2.png" alt="Image Alternative text" title="Image Title" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li class="active dropdown">
+                            <a  asp-controller="home" asp-action="index">صفحه اصلی</a>
+                        </li>
+                    <li class="dropdown">
+                        <a  asp-controller="home" asp-action="services">خدمات</a>
+                    </li>
+                    <li class="dropdown">
+                        <a  asp-controller="home" asp-action="about" >درباره ما</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="tel:0917617117">تماس باما</a>
+                    </li>
+
+                       @* <li class="dropdown">
+                            <a class="dropdown-toggle" href="index.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> خدمات</a>
+                            <div class="dropdown-menu">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="dropdown-meganav-list-items">
+                                            <li>
+                                                <a href="/home/about">درباره ما</a>
+                                            </li>
+                                            <li>
+                                                <a href="tel:0917617117">تماس باما</a>
+                                            </li>
+                                            <li>
+                                            <a href="/home/Services"> خدمات</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>*@
+                        <li class="dropdown">
+                            <a class="/home/GetAllHotels" href="index.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">اتاق</a>
+                            <div class="dropdown-menu">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul class="dropdown-meganav-list-items">  
+                                            <li>
+                                            <a asp-controller="home" asp-action="GetAllHotels">رزرو اتاق</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        
+                        <li class="navbar-nav-item-user dropdown">
+                            <a class="dropdown-toggle" href="account.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i>حساب کاربری
+                            </a>
+                            @if (User.Identity.IsAuthenticated)
+                                {
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a asp-controller="home" asp-action="index"> <i class="fa fa-user-o"></i>@User.Identity.Name ، خوش آمدید</a>
+                                </li>
+                                @*<li>
+                                    <a href="account-history.html"> <i class="fa fa-ticket"></i> تاریخچه رزرو </a>
+                                </li>*@
+                                <li>
+                                    <a asp-controller="account" asp-action="logout"> <i class="fa fa-ticket"></i>خروج</a>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a asp-controller="account" asp-action="login2"> <i class="fa fa-user-o"></i> حساب کاربری  </a>
+                                </li>
+                                @*<li>
+                                    <a href="account-history.html"> <i class="fa fa-ticket"></i> تاریخچه رزرو </a>
+                                </li>*@
+                            </ul>
+                        }
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>

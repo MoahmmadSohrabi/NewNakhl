@@ -1,0 +1,36 @@
+﻿@{
+    @inject NakhleNakhoda.Data.Models.Rep.Home_Rep home_Rep;
+    
+
+    var qnew = home_Rep.GetNew();
+}
+
+<div class="theme-page-section _pt-50 theme-page-section-lg">
+    <div class="container">
+        <div class="theme-page-section-header _ta-l">
+            <h5 style="font-family:b yekan !important;" class="theme-page-section-title">جدیدترین اتاق ها</h5>
+            <hr style="font-weight:bold;" />
+        </div>
+        <div class="theme-inline-slider row ltr" data-gutter="10">
+            <div class="owl-carousel" data-items="5" data-loop="true" data-nav="true">
+
+                @{
+                    foreach (var item in qnew)
+                    {
+                        <div class="theme-inline-slider-item">
+                            <div class="banner _br-4 banner-sqr banner-animate banner-animate-mask-in">
+                                <div class="banner-bg" style="background-image:url(@item.urltasvir);"></div>
+                                <div class="banner-mask"></div>
+                                <a class="banner-link" href="/Home/Showroom?id=@item.ID"></a>
+                                <div class="banner-caption _pt-40 _ph-25 _pb-20 banner-caption-bottom banner-caption-grad">
+                                    <h5 class="banner-title _fs">@item.name</h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

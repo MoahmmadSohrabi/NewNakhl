@@ -1,0 +1,90 @@
+﻿<div class="left side-menu">
+    <div class="sidebar-inner slimscrollleft">
+
+        <!-- User -->
+        <div class="user-box">
+            <div class="user-img">
+                <img src="~/MyAdmin/assets/images/users/avatar-1.jpg" alt="user-img" title="mohammad hossein" class="img-circle img-thumbnail img-responsive">
+
+            </div>
+            <div id="user-information">
+                <h4><a href="#">محمدحسین سهرابی</a> </h4>
+                <h5><a href="#"><i class="fa fa-circle text-danger"></i> آنلاین</a></h5>
+                <ul class="list-inline">
+
+                    <li>
+                        <a href="#">
+                            <i class="zmdi zmdi-settings"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="zmdi zmdi-email"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="text-custom">
+                            <i class="zmdi zmdi-power"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- End User -->
+        <div id="sidebar-menu">
+            <ul>
+                <li class="text-muted menu-title">منو</li>
+
+                <li>
+                    <a href="index.html" class="waves-effect active"><i class="zmdi zmdi-view-dashboard"></i> <span> داشبورد </span> </a>
+                </li>
+                <li>
+                    <a href="chart-chartist.html" class="waves-effect"><i class="fa fa-area-chart"></i> <span>آمار</span> </a>
+                </li>
+                <li>
+                    <a href="tables-editable.html" class="waves-effect"><i class="fa fa-ticket"></i> <span class="label label-danger pull-right">7</span><span> پشتیبانی</span> </a>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect "><i class="zmdi zmdi-layers"></i><span>تنظیمات</span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a asp-controller="Hotels" asp-action="Index">اتاق ها</a></li>
+                        <li><a asp-controller="TasavirHotels" asp-action="Index">تصاویر</a></li>
+                        <li><a asp-controller="EmkanatHotels" asp-action="Index">امکانات</a></li>
+                        <li><a asp-controller="ZarfyatOtaghHotels" asp-action="Index">ظرفیت اتاق</a></li>
+                        <li><a asp-controller="TedadTakhtHotels" asp-action="Index">تخت ها</a></li>
+                        <li><a asp-controller="TedadStarehs" asp-action="Index">ستاره ها</a></li>
+                        <li><a asp-controller="JozeyatHotels" asp-action="Index">جزئیات</a></li>
+                        <li><a asp-controller="RezervHotels" asp-action="Index">رزرو ها</a></li>
+                        <li><a href="tables-datatable2.html">لیست اتاق های رزرو شده</a></li>
+                        <li><a href="tables-datatable3.html">لیست اتاق های خالی</a></li>
+                        <li><a href="chart-chartjs.html">تراکنش ها</a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect "><i class="fa fa-shopping-cart"></i><span>فروش</span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="Amar.html">آمار فروش</a></li>
+                        <li><a href="tables-datatable2.html">لیست اتاق های رزرو شده</a></li>
+                        <li><a href="tables-datatable3.html">لیست اتاق های خالی</a></li>
+                        <li><a href="chart-chartjs.html">تراکنش ها</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a asp-controller="Member" asp-action="List" class="waves-effect"><i class="fa fa-user"></i> <span>کاربران</span> </a>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-item"></i><span> برگه ها </span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="page-login.html">ورود</a></li>
+                        <li><a href="page-register.html">ثبت نام</a></li>
+                        <li><a href="page-recoverpw.html">فراموشی رمز</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

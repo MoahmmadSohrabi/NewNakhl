@@ -1,0 +1,346 @@
+﻿@model NakhleNakhoda.Data.Models.ViewModel.Page
+@{
+    ViewData["Title"] = Model.NameHotel;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="theme-hero-area front" style="font-family:b yekan">
+    <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg" style="background-image:url(/Ghaleb/img/img/PHOTO-2023-03-19-18-36-16.jpg);" id="hero-banner"></div>
+        <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
+    </div>
+    <div class="theme-hero-area-body" style="backdrop-filter: blur(2px);font-family:'B Yekan';">
+        <div class="container">
+            <div class="theme-item-page-header _pb-50 theme-item-page-header-white">
+                <div class="theme-item-page-header-body">
+                    <ul class="theme-item-page-header-stars">
+                        @{
+                            int j = Convert.ToInt32(Model.lstjozeyats.FirstOrDefault().TedadStare);
+                            for (int i = 0; i < j; i++)
+                            {
+                                <li style="margin-top:20px !important;">
+                                    <i class="fa fa-star"></i>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <h2 class="theme-item-page-header-title">@Model.NameHotel</h2>
+                    <br>
+                    <div style="margin-top:30px !important;" class="theme-item-page-header-price">
+                        <div class="theme-item-page-header-price-body">
+                            <p class="_fs-sm">شروع قیمت برای یک شب</p>
+                            <p style="font-family:b yekan !important;" class="_fs-xl">@Model.GheymatYekShab ریال</p>
+                        </div>
+                        <a  style="background-color:#fff !important ;color:black !important;border-radius:10px !important;" class="btn _tt-uc My-btn-primary-inverse" data-scroll href="#booking-scroll" >لیست اتاق ها</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="theme-page-section theme-page-section-gray">
+    <div class="container">
+        <div class="row row-col-static" id="sticky-parent">
+            <div class="col-md-9 ">
+                <div class="fotorama _mb-30" data-nav="thumbs" data-minwidth="100%" data-arrows="always" data-allowfullscreen="native">
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-35-16.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-35-42.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-36-16.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-36-54.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-36-37.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-37-17.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-37-36.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-38-20.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-38-37.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-38-55.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-39-14.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-35-16.jpg" alt="Image Alternative text" title="Image Title" />
+                    <img src="/Ghaleb/img/img/PHOTO-2023-03-19-18-37-36.jpg" alt="Image Alternative text" title="Image Title" />
+                </div>
+                <div class="theme-item-page-tabs _mb-30">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs nav-default nav-no-br nav-sqr nav-mob-inline" role="tablist">
+                            <li class="active" role="presentation">
+                                <a class="_ph-30" aria-controls="HotelPageTabs-1" role="tab" data-toggle="tab" href="#HotelPageTabs-1">درباره هتل</a>
+                            </li>
+                            <li role="presentation">
+                                <a class="_ph-30" aria-controls="HotelPageTabs-3" role="tab" data-toggle="tab" href="#HotelPageTabs-2">نظرات کاربران</a>
+                            </li>
+                            <li role="presentation">
+                                <a class="_ph-30" aria-controls="HotelPageTabs-4" role="tab" data-toggle="tab" href="#HotelPageTabs-3">امکانات</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content _p-30 _bg-w">
+                            <div class="tab-pane active" id="HotelPageTabs-1" role="tab-panel">
+                                <div class="theme-item-page-desc">
+                                    <p>
+                                        هتل بوم گردی گردشگری نخل ناخدا هتلی بسیار لوکس است که می‌تواند اقامت خاطره‌انگیزی برای شما در جزیره ی زیبای قشم در سواحل دریای خلیج فارس رقم بزند. در هتل بوم گردی گردشگری ، همه‌ی امکانات در بالاترین سطح فراهم آمده تا میهمانان لذت یک سفر واقعی و آسوده را تجربه کنند. مثلاً اتاق‌ها علاوه بر اینکه با تخت‌های راحت و تمیز مجهز شده‌اند، دکوراسیون بسیار زیبا و آرام‌بخشی نیز دارند تا هر بار که به  جزیره ی قشم سفر می‌کنید، انتخابی جز این هتل بومی گردشگری را نداشته باشید. ضمناً رستوران‌های هتل نیز فوق‌العاده‌اند که ، خیال‌تان را از بابت خورد و خوراک در سفر راحت می‌کنند. هر گاه نیز خسته یا بی‌حوصله شدید، کافی است به ‌قسمت ساحلی هتل بروید و تنی به آب بزنید. به همه‌ی اینهادسترسی آسان به بازار های بزرگ جزیره را نیز اضافه کنید که با ارائه کالاهای لوکس، شما را از سفر و گشت و گذار در بازارها بی‌نیاز می‌کند.
+                                        @Model.Tozihat </p>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="HotelPageTabs-2" role="tab-panel">
+                                <div class="theme-reviews">
+                                    <div class="theme-reviews-score theme-reviews-score-hor">
+                                        <div class="row">
+                                            <div class="col-md-3 ">
+                                                <div class="theme-reviews-score-header">
+                                                    <p class="theme-reviews-score-subtitle">میانگین رضایت‌مندی</p>
+                                                </div>
+                                                <div class="theme-reviews-score-total">
+                                                    <p>
+                                                        @{
+                                                            List<double> lsint = new List<double>();
+                                                            double darsad = 0;
+                                                            double emtyaz = 0;
+                                                            foreach (var item in Model.lstnazar)
+                                                            {
+                                                                lsint.Add(item.Emtyaz);
+                                                            }
+                                                            emtyaz = Math.Round(lsint.Average(x => x), 2);
+                                                            darsad = emtyaz * 10;
+                                                        }
+                                                        @emtyaz
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 ">
+                                                <div class="theme-reviews-score-list">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="theme-reviews-score-item">
+                                                                <div class="theme-reviews-score-item-header">
+                                                                    <p class="theme-reviews-score-item-title">درصد رضایت کاربران</p>
+
+                                                                </div>
+                                                                <div class="theme-reviews-score-item-bar">
+                                                                    <div style="width:@darsad%;"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="theme-reviews-list">
+                                        <article class="theme-reviews-item">
+                                            <div class="row" data-gutter="10">
+
+                                                @foreach (var item in Model.lstnazar.Take(5))
+                                                {
+                                                    <div class="col-md-12">
+                                                        <div class="theme-reviews-rating">
+                                                            <div class="theme-reviews-rating-header">
+                                                                <span class="theme-reviews-rating-num">@item.Nazarat_Name</span>
+                                                                <span class="theme-reviews-rating-title">@item.Nazarat_Zaman</span>
+                                                            </div>
+                                                            <div class="theme-reviews-rating-bar">
+                                                                <div style="width:99%;"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="theme-reviews-item-body">
+                                                            <p class="theme-reviews-item-text">@item.Nazarat_Matn </p>
+                                                        </div>
+                                                    </div>
+
+                                                }
+                                            </div>
+                                        </article>
+                                        <div class="row">
+                                            <div class="col-md-12 ">
+                                                <form asp-action="Sabtnazar" asp-controller="Home" method="post">
+                                                    <input type="hidden" required name="idhotel" value="@Model.HotelID" class="form-control" />
+                                                    <label>ایمیل</label>
+                                                    <input type="text" name="email" required value="" class="form-control" />
+                                                    <label>نام</label>
+                                                    <input type="text" name="name" required value="" class="form-control" />
+                                                    <label>موضوع</label>
+                                                    <input type="text" name="mozoa" required value="" class="form-control" />
+                                                    <label>امتیاز</label>
+                                                    <select name="emtyaz" required class="form-control">
+                                                        <option value="1">امتیاز 1 از 10</option>
+                                                        <option value="2">امتیاز 2 از 10</option>
+                                                        <option value="3">امتیاز 3 از 10</option>
+                                                        <option value="4">امتیاز 4 از 10</option>
+                                                        <option value="5">امتیاز 5 از 10</option>
+                                                        <option value="6">امتیاز 6 از 10</option>
+                                                        <option value="7">امتیاز 7 از 10</option>
+                                                        <option value="8">امتیاز 8 از 10</option>
+                                                        <option value="9">امتیاز 9 از 10</option>
+                                                        <option value="10">امتیاز 10 از 10</option>
+                                                    </select>
+                                                    <label>متن</label>
+                                                    <textarea type="text" required cols="5" rows="7" name="matn" value="" class="form-control"></textarea>
+                                                    <br />
+                                                    <input type="submit" name="name" value="ثبت نظر" class="btn btn-success" />
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="HotelPageTabs-3" role="tab-panel">
+                                <div class="theme-item-page-facilities">
+                                    <div class="row">
+
+                                       @* @{
+                                            int take = 3;
+                                            double count = Model.lstemakanat.Count();
+                                            double a = (Math.Ceiling(count / take));
+                                            int skip = 0;
+
+                                            for (int i = 0; i < a; i++)
+                                            {
+                                                skip = (skip + take) - 3;
+
+                                                <div class="col-md-3 ">
+                                                    @foreach (var item in Model.lstemakanat.Skip(skip).Take(take))
+                                                    {
+                                                        <div class="theme-item-page-facilities-item">
+                                                            <i class="fa @item.Emkanat_Icon theme-item-page-facilities-item-icon"></i>
+                                                            <h5 class="theme-item-page-facilities-item-title">@item.Emkanat_Name</h5>
+                                                        </div>
+                                                    }
+                                                </div>
+
+                                                skip = skip + 3;
+                                            }
+
+                                        }*@
+                                        <div class="col-md-3 ">
+                                            <div class="theme-item-page-facilities-item">
+                                                <i class="fa fa-shower theme-item-page-facilities-item-icon"></i>
+                                                <h5 class="theme-item-page-facilities-item-title">حمام</h5>
+                                            </div>
+                                            <div class="theme-item-page-facilities-item">
+                                                <i class="fa fa-taxi theme-item-page-facilities-item-icon"></i>
+                                                <h5 class="theme-item-page-facilities-item-title">تاکسی سرویس</h5>
+                                            </div>
+                                            <div class="theme-item-page-facilities-item">
+                                                <i class="fa fa-glass theme-item-page-facilities-item-icon"></i>
+                                                <h5 class="theme-item-page-facilities-item-title">نوشیدنی</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <div class="theme-item-page-facilities-item">
+                                                <i class="fa fa-shopping-bag theme-item-page-facilities-item-icon"></i>
+                                                <h5 class="theme-item-page-facilities-item-title">فروشگاه</h5>
+                                            </div>
+                                            <div class="theme-item-page-facilities-item">
+                                                <i class="fa fa-car theme-item-page-facilities-item-icon"></i>
+                                                <h5 class="theme-item-page-facilities-item-title">پارکینگ</h5>
+                                            </div>
+                                            <div class="theme-item-page-facilities-item">
+                                                <i class="fa fa-bath theme-item-page-facilities-item-icon"></i>
+                                                <h5 class="theme-item-page-facilities-item-title">حمام</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <div class="theme-item-page-facilities-item">
+                                                <i class="fa fa-tint theme-item-page-facilities-item-icon"></i>
+                                                <h5 class="theme-item-page-facilities-item-title">خدمات نظافت</h5>
+                                            </div>
+                                            <div class="theme-item-page-facilities-item">
+                                                <i class="fa fa-fire theme-item-page-facilities-item-icon"></i>
+                                                <h5 class="theme-item-page-facilities-item-title">اعلام حریق</h5>
+                                            </div>
+                                            <div class="theme-item-page-facilities-item">
+                                                <i class="fa fa-desktop theme-item-page-facilities-item-icon"></i>
+                                                <h5 class="theme-item-page-facilities-item-title">LED</h5>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="booking-scroll">
+                    <div style="background-color:none !important;" class="theme-search-area _p-30  _mb-30 _br-3">
+                        <div class="row">
+                            <form asp-action="Entekhab" asp-controller="Home" method="get">
+                            <div class="col-md-12">
+                                <div class="theme-search-area-form">
+                                    <div class="row" data-gutter="10">
+                                            <input type="hidden" name="id" value="@Model.HotelID" />
+                                            <div class="col-md-3 ">
+                                                <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-no-border theme-search-area-section-fade-white theme-search-area-section-curved">
+                                                    <div class="theme-search-area-section-inner">
+                                                        <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                                        <input class="theme-search-area-section-input datePickerStart _mob-h" id="datepicker-check-in" type="text" name="tarikhvorod" value="@ViewBag.vorod" placeholder="تاریخ ورود" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 ">
+                                                <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-no-border theme-search-area-section-fade-white theme-search-area-section-curved">
+                                                    <div class="theme-search-area-section-inner">
+                                                        <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                                                        <input class="theme-search-area-section-input datePickerEnd _mob-h" id="datepicker-check-out" type="text" name="tarikhkhoroj" value="@ViewBag.khoroj" placeholder="تاریخ خروج" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-no-border theme-search-area-section-fade-white theme-search-area-section-curved quantity-selector" data-increment="تخته">
+                                                    <div class="theme-search-area-section-inner">
+                                                        <i class="theme-search-area-section-icon lin lin-tag"></i>
+                                                        <input class="theme-search-area-section-input" value="" required name="tedadtakht" type="text" />
+                                                        <div class="quantity-selector-box" id="HotelSearchRooms">
+                                                            <div class="quantity-selector-inner">
+                                                                <p class="quantity-selector-title">تخت</p>
+                                                                <ul class="quantity-selector-controls">
+                                                                    <li class="quantity-selector-decrement">
+                                                                        <a href="#">&#45;</a>
+                                                                    </li>
+                                                                    <li class="quantity-selector-current">1</li>
+                                                                    <li class="quantity-selector-increment">
+                                                                        <a href="#">&#43;</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-no-border theme-search-area-section-fade-white theme-search-area-section-curved quantity-selector" data-increment="نفره">
+                                                    <div class="theme-search-area-section-inner">
+                                                        <i class="theme-search-area-section-icon lin lin-people"></i>
+                                                        <input class="theme-search-area-section-input" required value="" name="zarfeyat" type="text" />
+                                                        <div class="quantity-selector-box" id="HotelSearchGuests">
+                                                            <div class="quantity-selector-inner">
+                                                                <p class="quantity-selector-title">نفره</p>
+                                                                <ul class="quantity-selector-controls">
+                                                                    <li class="quantity-selector-decrement">
+                                                                        <a href="#">&#45;</a>
+                                                                    </li>
+                                                                    <li class="quantity-selector-current">1</li>
+                                                                    <li class="quantity-selector-increment">
+                                                                        <a href="#">&#43;</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 ">
+                                                <button class="Mybtn My-theme-search-area-submit-curved _mt-0 theme-search-area-submit-sm theme-search-area-submit-no-border theme-search-area-submit-curved">
+                                                    جستجو
+                                                </button>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

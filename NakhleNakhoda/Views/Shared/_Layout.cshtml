@@ -1,0 +1,51 @@
+﻿<!DOCTYPE HTML>
+<html lang="fa">
+<head>
+    <title>کاوش در آرامش با بوم گردی به نخل ناخدا</title>
+    <meta charset="UTF-8" />
+    <link href="~/ghaleb/css/mystyle.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Ghaleb/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/Ghaleb/css/lineicons.css" />
+    <link rel="stylesheet" href="~/Ghaleb/css/weather-icons.css" />
+    <link rel="stylesheet" href="~/Ghaleb/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Ghaleb/css/styles.css" />
+    <link rel="stylesheet" href="~/Ghaleb/css/persian-datepicker.css" />
+</head>
+<body style="font-family:yekan !important">
+
+    @Html.Partial("_Menu")
+
+    @RenderBody()
+
+    @Html.Partial("_Footer")
+
+    <!---Social->
+       
+
+    <!--->
+
+    @RenderSection("Scripts",required:false)
+    @await RenderSectionAsync("Styles", required: false)
+    <script src="~/Ghaleb/js/jquery.js"></script>
+    <script src="~/Ghaleb/js/moment.js"></script>
+    <script src="~/Ghaleb/js/bootstrap.js"></script>
+    <script src="~/Ghaleb/js/owl-carousel.js"></script>
+    <script src="~/Ghaleb/js/blur-area.js"></script>
+    <script src="~/Ghaleb/js/icheck.js"></script>
+    <script src="~/Ghaleb/js/gmap.js"></script>
+    <script src="~/Ghaleb/js/magnific-popup.js"></script>
+    <script src="~/Ghaleb/js/ion-range-slider.js"></script>
+    <script src="~/Ghaleb/js/sticky-kit.js"></script>
+    <script src="~/Ghaleb/js/smooth-scroll.js"></script>
+    <script src="~/Ghaleb/js/fotorama.js"></script>
+    <script src="~/Ghaleb/js/persian-datepicker.js"></script>
+    <script src="~/Ghaleb/js/typeahead.js"></script>
+    <script src="~/Ghaleb/js/quantity-selector.js"></script>
+    <script src="~/Ghaleb/js/countdown.js"></script>
+    <script src="~/Ghaleb/js/window-scroll-action.js"></script>
+    <script src="~/Ghaleb/js/fitvid.js"></script>
+    <script src="~/Ghaleb/js/youtube-bg.js"></script>
+    <script src="~/Ghaleb/js/custom.js"></script>
+</body>
+</html>

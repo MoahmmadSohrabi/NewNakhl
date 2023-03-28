@@ -1,0 +1,121 @@
+﻿@model MemberModel
+
+@{
+    ViewBag.PageTitle = "ویرایش کاربر";
+}
+
+<form asp-action="Edit">
+    <div class="panel panel-inverse">
+        <div class="panel-heading">
+            <div class="panel-heading-btn">
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+            </div>
+            <h4 class="panel-title" style="font-weight: normal; font-size: 15px;">عملیات</h4>
+        </div>
+        <div class="panel-body">
+            <div class="content-header clearfix" style="font-weight:lighter">
+                <h4 class="float-right">
+                    ویرایش کاربر
+                    <admin-button-back asp-action="List" />
+                </h4>
+                <div class="float-left">
+                    <admin-button-save name="save" text="ذخیره" />
+                    <admin-button-save name="save-continue" text="ذخیره و ادامه ویرایش" />
+                </div>
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+        </div>
+    </div>
+    <admin-panel asp-name="user-info" asp-icon="fa fa-info" asp-title="اطلاعات کاربر">
+        <div class="form-group row">
+            <admin-label asp-for="FirstName" />
+            <div class="col-md-3">
+                <admin-input asp-for="FirstName" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="LastName" />
+            <div class="col-md-3">
+                <admin-input asp-for="LastName" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="UserName" />
+            <div class="col-md-3">
+                <admin-input asp-for="UserName" asp-required="true" asp-readonly="true" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="PhoneNumber" />
+            <div class="col-md-3">
+                <admin-input asp-for="PhoneNumber" asp-required="true" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="Email" />
+            <div class="col-md-3">
+                <admin-input asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+@*        <div class="form-group row">
+            <admin-label asp-for="PictureId" />
+            <div class="col-md-9">
+                <admin-input asp-for="PictureId" />
+            </div>
+        </div>*@
+        <div class="form-group row">
+            <admin-label asp-for="Active" />
+            <div class="col-md-9">
+                <admin-input asp-for="Active" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="SelectedRoleIds" />
+            <div class="col-md-4">
+                <admin-select asp-for="SelectedRoleIds" asp-items="Model.AvailableRoles" asp-multiple="true" asp-required="true" />
+                <span asp-validation-for="SelectedRoleIds" class="text-danger"></span>
+            </div>
+        </div>
+@*        <div class="form-group row">
+            <admin-label asp-for="SelectedOrganizationIds" />
+            <div class="col-md-4">
+                <admin-select asp-for="SelectedOrganizationIds" asp-items="Model.AvailableOrganization" asp-multiple="true" asp-required="true" />
+                <span asp-validation-for="SelectedOrganizationIds" class="text-danger"></span>
+            </div>
+        </div>*@
+    </admin-panel>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            var roleIdsInput = $('#@Html.IdFor(model => model.SelectedRoleIds)');
+            var preSelectedIds = JSON.parse("@Html.Raw(HttpUtility.JavaScriptStringEncode(JsonConvert.SerializeObject(Model.SelectedRoleIds)))");
+            roleIdsInput.val(preSelectedIds).trigger('change');
+            roleIdsInput.select2({
+                allowClear: true,
+                dir: "rtl",
+                closeOnSelect: false,
+                placeholder: "انتخاب نقش کاربر",
+            });
+        });
+    </script>
+@*    <script>
+        $(document).ready(function () {
+            var SelectedOrganizationIdsInput = $('#@Html.IdFor(model => model.SelectedOrganizationIds)');
+            var preSelectedIds = JSON.parse("@Html.Raw(HttpUtility.JavaScriptStringEncode(JsonConvert.SerializeObject(Model.SelectedOrganizationIds)))");
+            SelectedOrganizationIdsInput.val(preSelectedIds).trigger('change');
+            SelectedOrganizationIdsInput.select2({
+                dir: "rtl",
+                placeholder: "انتخاب فروشنده",
+            });
+        });
+    </script>*@
+}

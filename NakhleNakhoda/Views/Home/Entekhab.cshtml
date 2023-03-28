@@ -1,0 +1,232 @@
+﻿@model NakhleNakhoda.Data.Models.ViewModel.Page
+@{
+    ViewData["Title"] = "رزرو";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model == null)
+{
+    <div class="theme-hero-area">
+        <div class="theme-hero-area-bg-wrap">
+            <div class="theme-hero-area-bg-pattern theme-hero-area-bg-pattern-ultra-light" style="background-image:url(/img/img/patterns/4.png);"></div>
+            <div class="theme-hero-area-grad-mask"></div>
+        </div>
+        <div class="theme-hero-area-body" style="background-color:#745042;font-family:yekan !important;">
+            <div class="container">
+                <div class="theme-item-page-header _pb-50 theme-item-page-header-white">
+                    <div class="theme-item-page-header-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="theme-item-page-rooms-table _p-10 _bg-w _mb-mob-30">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>نوع اتاق</th>
+                    <th>ظرفیت اتاق</th>
+                    <th>خدمات اتاق</th>
+                    <th>قیمت برای هر شب</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="theme-item-page-rooms-table-type">
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        موردی یافت نشد
+                    </td>
+                    <td class="theme-item-page-rooms-table-price">
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+
+    <div class="theme-hero-area front" style="font-family:b yekan">
+        <div class="theme-hero-area-bg-wrap">
+            <div class="theme-hero-area-bg" style="background-image:url(/Ghaleb/img/img/PHOTO-2023-03-19-18-36-16.jpg);" id="hero-banner"></div>
+            <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
+        </div>
+        <div class="theme-hero-area-body" style="backdrop-filter: blur(2px);font-family:'B Yekan';">
+            <div class="container">
+                <div class="theme-item-page-header _pb-50 theme-item-page-header-white">
+                    <div class="theme-item-page-header-body">
+                        <ul class="theme-item-page-header-stars">
+                            @{
+                                int j = Convert.ToInt32(Model.lstjozeyats.FirstOrDefault().TedadStare);
+                                for (int i = 0; i < j; i++)
+                                {
+                                    <li style="margin-top:20px !important;">
+                                        <i class="fa fa-star"></i>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <h2 class="theme-item-page-header-title">@Model.NameHotel</h2>
+                        <br>
+                        <div style="margin-top:30px !important;" class="theme-item-page-header-price">
+                            <div class="theme-item-page-header-price-body">
+                                <p class="_fs-sm">شروع قیمت برای یک شب</p>
+                                
+                                <p style="font-family:b yekan !important;" class="_fs-xl">@Model.GheymatYekShab ریال</p>
+                            </div>
+                            <a style="background-color:#fff !important ;color:black !important;border-radius:10px !important;" class="btn My-btn-primary-inverse _tt-uc btn-primary-inverse" data-scroll href="#booking-scroll">لیست اتاق ها</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="theme-item-page-rooms-table _p-10 _bg-w _mb-mob-30">
+        <table class="table">
+            <thead class="text-center">
+                <tr class="text-center">
+                    <th>نوع اتاق</th>
+                    <th>ظرفیت اتاق</th>
+                    <th>خدمات اتاق</th>
+                    <th>قیمت برای هر شب</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model.lstjozeyats)
+                {
+                    <tr class="text-center">
+
+                        <td class="theme-item-page-rooms-table-type">
+                            
+                            <img class="theme-item-page-rooms-table-type-img" src="@Model.imgUrl" style="width:300px !important; height:150px !important;border-radius:10px;" alt="Image Alternative text" title="Image Title" />
+                            <h5 class="theme-item-page-rooms-table-type-title">
+                                @item.TedadTakht
+                                <i class="fa fa-bed"></i>
+                            </h5>
+                        </td>
+                        <td>
+                            <ul class="theme-item-page-rooms-table-guests-count">
+                                @item.ZarfiatOtagh
+                                <li>
+                                    <i class="fa fa-male"></i>
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="theme-item-page-rooms-table-type-feature-list">
+
+                                @*@foreach (var item1 in Model.lstemakanat)
+                                {
+                                    <li>
+                                        <i class="fa fa-shower theme-item-page-rooms-table-type-feature-list-icon"></i>حمام
+
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-tint theme-item-page-rooms-table-type-feature-list-icon"></i>خدمات نظافت
+
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-desktop theme-item-page-rooms-table-type-feature-list-icon"></i>LED
+
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-music theme-item-page-rooms-table-type-feature-list-icon"></i>موسیقی
+
+                                    </li>
+
+                                }*@
+                                
+                                
+
+                                <div class="col-md-4 col-sm-2 ">
+                                    <div class="theme-item-page-facilities-item">
+                                        <i class="fa fa-shower theme-item-page-facilities-item-icon"></i>
+                                        <h5 class="theme-item-page-facilities-item-title">حمام</h5>
+                                    </div>
+                                    <div class="theme-item-page-facilities-item">
+                                        <i class="fa fa-music theme-item-page-facilities-item-icon"></i>
+                                        <h5 class="theme-item-page-facilities-item-title">موسیقی</h5>
+                                    </div>
+                                    <div class="theme-item-page-facilities-item">
+                                        <i class="fa fa-glass theme-item-page-facilities-item-icon"></i>
+                                        <h5 class="theme-item-page-facilities-item-title">نوشیدنی</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-2 ">
+                                    <div class="theme-item-page-facilities-item">
+                                        <i class="fa fa-shopping-bag theme-item-page-facilities-item-icon"></i>
+                                        <h5 class="theme-item-page-facilities-item-title">فروشگاه</h5>
+                                    </div>
+                                    <div class="theme-item-page-facilities-item">
+                                        <i class="fa fa-car theme-item-page-facilities-item-icon"></i>
+                                        <h5 class="theme-item-page-facilities-item-title">پارکینگ</h5>
+                                    </div>
+                                    <div class="theme-item-page-facilities-item">
+                                        <i class="fa fa-bath theme-item-page-facilities-item-icon"></i>
+                                        <h5 class="theme-item-page-facilities-item-title">حمام</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-2 ">
+                                    <div class="theme-item-page-facilities-item">
+                                        <i class="fa fa-tint theme-item-page-facilities-item-icon"></i>
+                                        <h5 class="theme-item-page-facilities-item-title">خدمات نظافت</h5>
+                                    </div>
+                                    <div class="theme-item-page-facilities-item">
+                                        <i class="fa fa-fire theme-item-page-facilities-item-icon"></i>
+                                        <h5 class="theme-item-page-facilities-item-title">اعلام حریق</h5>
+                                    </div>
+                                    <div class="theme-item-page-facilities-item">
+                                        <i class="fa fa-desktop theme-item-page-facilities-item-icon"></i>
+                                        <h5 class="theme-item-page-facilities-item-title">LED</h5>
+                                    </div>
+                                </div>
+
+                            </ul>
+                        </td>
+                        <td class="theme-item-page-rooms-table-price">
+                            <div>
+                                <div class="theme-item-page-rooms-table-price-night">
+                                    <p style="font-family:b yekan !important;" class="text-bold-600 _fs-b">@Model.GheymatYekShab  <small> ریال </small> </p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <form asp-action="Rezerv" asp-controller="Rezerv" method="post">
+                                <input type="hidden" name="idhotel" value="@ViewBag.id" />
+                                <input type="hidden" name="tedadtakht" value="@item.TedadTakht" />
+                                <input type="hidden" name="khoroj" value="@ViewBag.khoroj" />
+                                <input type="hidden" name="vorod" value="@ViewBag.vorod" />
+                                <input type="hidden" name="zarfeyat" value="@item.ZarfiatOtagh" />
+                                <i class="fa fa-arrow-left"></i> <input style="border-radius:10px;margin-right: 20%;width: 60%;" class="My-btn-primary-inverse btn btn-primary-inverse btn-block" type="submit" value="رزرو کنید" />
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+
+
+}
+
+
+

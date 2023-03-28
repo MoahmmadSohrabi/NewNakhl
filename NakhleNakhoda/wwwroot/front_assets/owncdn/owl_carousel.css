@@ -1,0 +1,22 @@
+.checked {
+    color: orange;
+  }
+  .card-text{
+      font-size: 11px;
+  }
+  .circle-heart{
+      width: 25px;
+      height: 25px;
+      border: 2px solid white;
+      border-radius: 100%;
+      float: left;
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      opacity: .4;
+      backdrop-filter: blur(8px);
+      margin: 5px;
+  }
+  .circle-heart:hover{
+      opacity: 1;
+  }

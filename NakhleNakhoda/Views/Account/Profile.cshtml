@@ -1,0 +1,258 @@
+﻿@using System.Text.RegularExpressions
+@using System.Web;
+@using Newtonsoft.Json;
+@model UserModel
+<div class="inner-banner inner-bg9">
+    <div class="container">
+        <div class="inner-title">
+            <ul>
+                <li>
+                    <a asp-controller="Home" asp-action="Index">خانه</a>
+                </li>
+                <li><i class='bx bx-chevron-left'></i></li>
+                <li>اطلاعات کاربر</li>
+            </ul>
+            <h3>اطلاعات کاربر</h3>
+        </div>
+    </div>
+</div>
+
+<div class="sign-in-area pt-100 pb-70">
+    <div id="content-profile" class="border bg-white shadow p-4 mt-3">
+        <div class="row">
+            <div class="col-md-6 profile-summary">
+                <div>
+                    <span>نام و نام خانوادگی</span>
+                    <span>@Model.FirstName @Model.LastName</span>
+                </div>
+                <div>
+                    <span>جنسیت</span>
+                    <span>@(Model.GenderId > 0 ? Model.Gender : "")</span>
+                </div>
+                <div>
+                    <span>تاریخ تولد</span>
+                    <span>@(Model.BirthDate != null ? Model.BirthDateName : "")</span>
+                </div>
+                <div>
+                    <span>کد ملی</span>
+                    <span>@Model.SocialNumber</span>
+                </div>
+                <div>
+                    <span>شماره موبایل</span>
+                    <span>@Model.PhoneNumber</span>
+                </div>
+            </div>
+            <div class="col-md-6 profile-summary sm">
+                <div>
+                    <span>ایمیل</span>
+                    <span>@Model.Email</span>
+                </div>
+                <div>
+                    <span>شماره کارت</span>
+                    <div class="ltr d-inline-block">
+                        @if (!String.IsNullOrEmpty(Model.CardNumber))
+                        {
+                            @Regex.Replace(Model.CardNumber, ".{4}", "$0 ").Trim()
+                        }
+                    </div>
+                </div>
+                <div>
+                    <span>شماره حساب</span>
+                    <span>@Model.AccountNumber</span>
+                </div>
+                <div>
+                    <span>شماره شبا</span>
+                    <div class="ltr d-inline-block">
+                        @if (Model.ShebaNumber.Length > 10)
+                        {
+                            @Regex.Replace(Model.ShebaNumber, ".{4}", "$0-").Trim()
+                            ;
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <hr />
+            </div>
+
+            <h2>ویرایش پروفایل</h2>
+            <form class="col-12" method="post" novalidate="novalidate">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group row">
+                            <label asp-for="PictureId" />
+                            <div class="col-md-9">
+                                <site-input asp-for="PictureId" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 px-1">
+                        <div class="border rounded bg-grey p-3 mb-3">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-2">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="GenderId"></label>
+                                        <select asp-for="GenderId" asp-items="Model.AvailableGender" class="form-select" data-placeholder="جنسیت"></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="FirstName"></label>
+                                        <input asp-for="FirstName" class="form-control" />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="LastName"></label>
+                                        <input asp-for="LastName" class="form-control" />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="SocialNumber"></label>
+                                        <input asp-for="SocialNumber" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="Email"></label>
+                                        <input asp-for="Email" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="BirthYear"></label>
+                                        <div class="row">
+                                            <div class="col-sm-3"><select asp-for="BirthDay" class="form-select" data-placeholder="روز"></select></div>
+                                            <div class="col-sm-5 birth-month"><select asp-for="BirthMonth" onchange="caldays()" class="form-select" data-placeholder="ماه"></select></div>
+                                            <div class="col-sm-4"><select asp-for="BirthYear" onchange="caldays()" class="form-select" data-placeholder="سال"></select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 px-1">
+                        <div class="border rounded bg-grey p-3">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="CardNumber"></label>
+                                        <input asp-for="CardNumber" class="form-control" data-mask="####-####-####-####" maxlength="19" style="direction: ltr;" />
+                                        <span asp-validation-for="CardNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="AccountNumber"></label>
+                                        <input asp-for="AccountNumber" class="form-control" style="direction: ltr;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" asp-for="ShebaNumber"></label>
+                                        <div class="input-group">
+                                            <input asp-for="ShebaNumber" type="text" class="form-control" data-mask="##-####-####-####-####-####-##" maxlength="30" style="direction: ltr;" value="@Model.ShebaNumber.Substring(2,Model.ShebaNumber.Length-2)">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">@Model.ShebaNumber.Substring(0, 2)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-4 col-md-3">
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-outline-success">ثبت ویرایش</button>
+                        </div>
+                    </div>
+                    <div class="my-4 col-md-3">
+                        <div class="d-grid gap-2">
+                            <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger">خروج از حساب</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            var GenderIdInput = $('#@Html.IdFor(model => model.GenderId)');
+            var preSelectedIds = JSON.parse("@Html.Raw(HttpUtility.JavaScriptStringEncode(JsonConvert.SerializeObject(Model.GenderId)))");
+            GenderIdInput.val(preSelectedIds).trigger('change');
+        });
+    </script>
+    <script src="~/lib/persian-date/persian-date.min.js"></script>
+    <script>
+        var daySelect = $('#@Html.IdFor(model => model.BirthDay)');
+        var monthSelect = $('#@Html.IdFor(model => model.BirthMonth)');
+        var yearSelect = $('#@Html.IdFor(model => model.BirthYear)');
+
+        var date = new persianDate();
+        var toYear = date.year();
+        var fromYear = toYear - 150;
+
+        for (var i = 1; i < 13; i++) {
+            var opt = document.createElement("option");
+            opt.value = i;
+            opt.innerHTML = new persianDate([1401, i]).format("MMMM");
+            monthSelect.append(opt);
+        }
+
+        for (var i = toYear; i >= fromYear; i--) {
+            var opt = document.createElement("option");
+            opt.value = i;
+            opt.innerHTML = i;
+            yearSelect.append(opt);
+        }
+
+        function caldays() {
+            var d = daySelect.val();
+            var m = monthSelect.val();
+            var y = yearSelect.val();
+            var days = new persianDate([y, m]).daysInMonth();
+            daySelect.html("");
+            var i = 1;
+            for (var i; i <= days; i++) {
+                var opt = document.createElement("option");
+                opt.value = i;
+                opt.innerHTML = i;
+                daySelect.append(opt);
+            }
+
+            if (d != null) {
+                daySelect.val(d);
+            }
+            if (d > i - 1) {
+                daySelect.val(d - 1);
+            }
+            //TO
+        }
+
+        caldays();
+        if (@Model.BirthYear > 1250)
+            yearSelect.val(@Model.BirthYear);
+        monthSelect.val(@Model.BirthMonth);
+        daySelect.val(@Model.BirthDay);
+        $('.nice-select').remove();
+        initSelect();
+    </script>
+}

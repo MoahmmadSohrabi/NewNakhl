@@ -1,0 +1,28 @@
+﻿.Mybtn {
+    background-color: #745042;
+    color: #fff;
+    margin-top: 26.5px;
+    display: block;
+    height: 57px;
+    line-height: 57px;
+    text-align: center;
+    padding: 0;
+    width: 100%;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+}
+.My-nav-white.nav-line > li.active > a {
+    color: #fff !important;
+    font-weight: 600;
+}
+.My-theme-search-area-submit-curved {
+    border-radius: 10px !important;
+}
+.My-btn-primary-invert,
+.My-btn-primary-inverse {
+    background-color: #745042 !important;
+    border-color: #745042 !important;
+    color: #fff !important;
+}

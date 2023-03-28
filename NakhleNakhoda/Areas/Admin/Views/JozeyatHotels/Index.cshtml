@@ -1,0 +1,75 @@
+﻿@model IEnumerable<NakhleNakhoda.Data.Models.DB.JozeyatHotel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-page">
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Jozeyat_Teadad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZarfyatOtagh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TedadStareh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TedadTakhtHotel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hoteljoz)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Jozeyat_Teadad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZarfyatOtagh.ZarfyatOtagh_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TedadStareh.TedadStareh_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TedadTakhtHotel.TedadTakh_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hoteljoz.Name_Hotel)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Jozeyat_ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Jozeyat_ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Jozeyat_ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,96 @@
+﻿@model NakhleNakhoda.Data.Models.ViewModel.Sorathesabs
+@using System.Globalization
+@{
+    ViewData["Title"] = "Sorathesab";
+    Layout = null;
+    PersianCalendar pc = new PersianCalendar();
+    string dtk1 = string.Format("{0}/{1}/{2}", pc.GetYear(Model.Tarikhvariz.Date), pc.GetMonth(Model.Tarikhvariz.Date), pc.GetDayOfMonth(Model.Tarikhvariz.Date));
+
+}
+<!DOCTYPE HTML>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Rezerv/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/Rezerv/css/lineicons.css" />
+    <link rel="stylesheet" href="~/Rezerv/css/weather-icons.css" />
+    <link rel="stylesheet" href="~/Rezerv/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Rezerv/css/styles.css" />
+    <link rel="stylesheet" href="~/Rezerv/css/persian-datepicker.css" />
+</head>
+<body>
+
+
+    <div style="height:52px; background-color:#000"></div>
+    <div class="theme-page-section theme-page-section-xl theme-page-section-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="theme-payment-success">
+                        <div class="theme-payment-success-header">
+                            <i class="fa fa-check-circle theme-payment-success-header-icon"></i>
+                            <h1 class="theme-payment-success-title">رزرو شما با موفقیت انجام شد.</h1>
+                        </div>
+                        <div class="theme-payment-success-box">
+                            <ul class="theme-payment-success-summary">
+                                <li>
+                                    شماره تراکنش
+                                    <span>@Model.Trakonesh</span>
+                                </li>
+                                <li>
+                                    تاریخ پرداخت
+                                    <span> @dtk1 </span>
+                                </li>
+                                <li>
+                                    مشتری
+                                    <span>@Model.NameNameKhanevadgy</span>
+                                </li>
+                                <li>
+                                    کد پیگیری
+                                    <span>@Model.Codepigiry</span>
+                                </li>
+                                <li>
+                                    نوع پرداخت
+                                    <span>آنلاین - اینترنتی</span>
+                                </li>
+                                <li>
+                                    کل مبلغ پرداختی
+                                    <span>@Model.Gheymat ریال</span>
+                                </li>
+                            </ul>
+                            <p class="theme-payment-success-check-order">
+                                همچنین این اطلاعات برای شما ایمیل گردید
+                            </p>
+                            <a href="/Home/Index">بازگشت به سایت</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Rezerv/js/jquery.js"></script>
+    <script src="~/Rezerv/js/moment.js"></script>
+    <script src="~/Rezerv/js/bootstrap.js"></script>
+    <script src="~/Rezerv/js/owl-carousel.js"></script>
+    <script src="~/Rezerv/js/blur-area.js"></script>
+    <script src="~/Rezerv/js/icheck.js"></script>
+    <script src="~/Rezerv/js/gmap.js"></script>
+    <script src="~/Rezerv/js/magnific-popup.js"></script>
+    <script src="~/Rezerv/js/ion-range-slider.js"></script>
+    <script src="~/Rezerv/js/sticky-kit.js"></script>
+    <script src="~/Rezerv/js/smooth-scroll.js"></script>
+    <script src="~/Rezerv/js/fotorama.js"></script>
+    <script src="~/Rezerv/js/persian-datepicker.js"></script>
+    <script src="~/Rezerv/js/typeahead.js"></script>
+    <script src="~/Rezerv/js/quantity-selector.js"></script>
+    <script src="~/Rezerv/js/countdown.js"></script>
+    <script src="~/Rezerv/js/window-scroll-action.js"></script>
+    <script src="~/Rezerv/js/fitvid.js"></script>
+    <script src="~/Rezerv/js/youtube-bg.js"></script>
+    <script src="~/Rezerv/js/custom.js"></script>
+</body>
+</html>
+
+

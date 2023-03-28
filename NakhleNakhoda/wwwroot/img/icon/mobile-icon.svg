@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="19px" viewBox="0 0 12 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Mobile Icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Alibaba---Signin/Signup---OTP---Error---Mobile" transform="translate(-120.000000, -243.000000)" stroke="#424242" stroke-width="1.5">
+            <g id="Signin/Signup" transform="translate(15.000000, 75.000000)">
+                <g id="Group-5" transform="translate(15.000000, 47.000000)">
+                    <g id="Group-3" transform="translate(17.000000, 118.000000)">
+                        <g id="Group-7" transform="translate(74.000000, 0.000000)">
+                            <g id="Mobile-Icon" transform="translate(0.000000, 3.000000)">
+                                <path d="M8,18 L1.47368421,18 C0.659789474,18 0,17.3712594 0,16.5956656 L0,2.35170279 C0,1.57610898 0.659789474,0.947368421 1.47368421,0.947368421 L8,0.947368421 C8.81389474,0.947368421 9.47368421,1.57610898 9.47368421,2.35170279 L9.47368421,16.5956656 C9.47368421,17.3712594 8.81389474,18 8,18 Z" id="Stroke-1"/>
+                                <path d="M7.90593684,0.473684211 L7.67667368,2.20808173 C7.48383158,2.8693226 6.85204211,3.32693498 6.13183158,3.32693498 L3.29225263,3.32693498 C2.54088421,3.32693498 1.89035789,2.8296 1.7272,2.13064272 L1.56193684,0.473684211" id="Stroke-3"/>
+                                <path d="M3.26315789,15.1578947 L6.21052632,15.1578947" id="Stroke-5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
